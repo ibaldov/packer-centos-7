@@ -1,8 +1,12 @@
 # Cache objects
 packer_cache/
-
+output-basic-example/
 # Crash log
 crash.log
 
 # For built boxes
 *.box
+
+*.iso
+*.cfg
+*.*__
