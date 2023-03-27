@@ -1,7 +1,7 @@
 source "virtualbox-iso" "basic-example" {
       guest_os_type = "RedHat_64"
       # iso_url = "file:///C:/Users/username/CentOS-7-x86_64-DVD-2009.iso"
-      iso_url = "CentOS-7-x86_64-DVD-2009.iso"
+      iso_url = "isos/CentOS-7-x86_64-DVD-2009.iso"
       iso_checksum = "md5:5a3b0b3f4a6654ee195ec6edb6d938a4"
       boot_command = [
          "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
@@ -18,6 +18,8 @@ source "virtualbox-iso" "basic-example" {
         ["modifyvm", "{{.Name}}", "--cpus", "4"],
       ]
       http_directory = "http"
+      output_directory  = "builds/${source.name}"
+      format = "ova"
 }
 
 
