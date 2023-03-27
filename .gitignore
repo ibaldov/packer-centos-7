@@ -1,6 +1,7 @@
 # Cache objects
 packer_cache/
 output-basic-example/
+builds*/
 # Crash log
 crash.log
 
@@ -8,5 +9,6 @@ crash.log
 *.box
 
 *.iso
-*.cfg
+# *.cfg
 *.*__
+# *.cmd
