@@ -7,7 +7,7 @@ source "virtualbox-iso" "basic-example" {
          "<up><wait><tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
       ]
       disk_size = 10240
-      headless = false
+      headless = true
       ssh_username = "packer"
       ssh_password = "packer"
       ssh_port = 22
@@ -16,6 +16,7 @@ source "virtualbox-iso" "basic-example" {
       vboxmanage = [
         ["modifyvm", "{{.Name}}", "--memory", "1024"],
         ["modifyvm", "{{.Name}}", "--cpus", "4"],
+        ["modifyvm", "{{.Name}}", "--nat-localhostreachable1", "on"], # https://github.com/hashicorp/packer/issues/12118
       ]
       http_directory = "http"
       output_directory  = "builds/${source.name}"
